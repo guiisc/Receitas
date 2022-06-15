@@ -1,0 +1,6 @@
+{
+    "Nome": "sopa",
+    "Categorias": ["sopa", "frio", "caldo"],
+    "Ingredientes": ["frango", "carne", "costelinha", "batata", "batata-doce", "legumes", "batata", "cenoura", "mandioquinha", "cebola", "pão"],
+    "ModoPreparo": ["cortar tudo em pedaços pequenos", "fritar um pouco a carne", "colocar água na panela de pressão as coisas mais duras: carne, cenoura , mandioquinha etc", "colocar as coisas mais moles e voltar pra pressão", "comer quente e ser feliz"]
+}
