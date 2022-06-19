@@ -43,12 +43,11 @@ class Front:
         with self.cont_consulta:
             table = self.db.filter(
                 tabelas['Ingredientes'], tabelas['Categorias'])
-            col1, col2, col3 = st.columns(3)
-            col1.write('ID'); col2.write('Nome'); col3.write('Receita')
+            col1, col2= st.columns(2)
+            col1.write('ID'); col2.write('Receita')
             for idx, row in table.iterrows():
                 col1.write(row[1])
-                col2.write(row[0])
-                col3.button(f'{row[1]}', on_click=self.__button_filter, args=(row[1], row[0],))
+                col2.button(f'{row[0]}', key=idx, on_click=self.__button_filter, args=(row[1], row[0],))
         return
                 
     def __button_filter(self, id, nome):

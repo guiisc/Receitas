@@ -35,7 +35,9 @@ class InserReceita:
             nome = st.text_input("Nome: ")
             categorias = st.text_input('Categorias: ')
             ingredientes = st.text_input('Ingredientes: ')
-            modoPreparo = st.text_input('Modo de Preparo: ')
+            st.text('Modo de Preparo:')
+            
+            modoPreparo = [st.text_input(f'{i+1}: ') for i in range(10)]
             
             submitted = st.form_submit_button("Inserir!")
             if submitted:

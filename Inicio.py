@@ -10,3 +10,11 @@ st.write(f"""
         para ajudar a decidir o que comer e trocar receitas
 
 """, unsafe_allow_html=True)
+
+with open('data/Receitas.db', 'rb') as f:
+        st.download_button(
+                label="Download Database",
+                data=f,
+                file_name='Receitas.db',
+                mime='application/octet-stream'
+        )
