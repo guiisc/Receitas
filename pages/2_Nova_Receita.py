@@ -15,7 +15,7 @@ class InserReceita:
             "Nome": nome,
             "Categorias": self.__strip_format(categorias.split(',')),
             "Ingredientes": self.__strip_format(ingredientes.split(',')),
-            "ModoPreparo": self.__strip_format(modoPreparo.split(','))
+            "ModoPreparo": self.__strip_format(modoPreparo)
         }
         return json_f
     

@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.write(f"""
         # BEM VINDO
@@ -11,10 +12,11 @@ st.write(f"""
 
 """, unsafe_allow_html=True)
 
-with open('data/Receitas.db', 'rb') as f:
-        st.download_button(
-                label="Download Database",
-                data=f,
-                file_name='Receitas.db',
-                mime='application/octet-stream'
-        )
+if 'Receitas.db' in os.listdir('data/'):
+        with open('data/Receitas.db', 'rb') as f:
+                st.download_button(
+                        label="Download Database",
+                        data=f,
+                        file_name='Receitas.db',
+                        mime='application/octet-stream'
+                )
