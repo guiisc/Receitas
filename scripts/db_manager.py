@@ -24,12 +24,14 @@ class DBManager:
         self.sql.create_table_categorias(self.conn)
         self.sql.create_table_ingredientes(self.conn)
         self.sql.create_table_modopreparo(self.conn)
+        self.sql.create_table_calendario(self.conn)
         return
     
     def to_pd(self, table_name, table):
         """
         """
         columns = self.check_columns(table_name)
+        columns.insert(0, "Dia")
         df = pd.DataFrame(table, columns=columns)
         return df
         
@@ -95,6 +97,11 @@ class DBManager:
             self.sql.check_last_id(self.conn, table) + 1)
         return self.sql.insert_row(self.conn, table, values)
     
+    def add_calendar(self, values):
+        self.sql.delete_row_calendar(self.conn, values[0])
+        self.sql.insert_row(self.conn, "Calendario", values)
+        return
+    
     def filter(self, ingredientes, categorias):
         table =  self.sql.consult_(self.conn, ingredientes, categorias)
         return pd.DataFrame(table, columns=['Nome', 'id'])
@@ -102,6 +109,10 @@ class DBManager:
     def get_passo_passo(self, id):
         table = self.sql.get_passo_passo(self.conn, id)
         return pd.DataFrame(table)
+    
+    def get_calendario(self, date):
+        table = self.sql.get_refeicao(self.conn, date)
+        return table
 
 class JsonManager:
     def __init__(self) -> None:

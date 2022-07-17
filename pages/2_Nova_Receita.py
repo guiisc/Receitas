@@ -1,4 +1,3 @@
-import json
 import streamlit as st
 from scripts.db_manager import JsonManager
 

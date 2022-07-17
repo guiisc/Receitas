@@ -9,7 +9,8 @@ class SQLCommands:
             'Receitas': 'id_receitas',
             'Categorias': 'id_categorias',
             'Ingredientes': 'id_ingredientes',
-            'ModoPreparo': 'id_modopreparo'}
+            'ModoPreparo': 'id_modopreparo',
+            'Calendario': 'dia'}
         self.f = lambda x: x.replace('[', '(').replace(']', ')').replace("', '", "','")
         return
     
@@ -67,6 +68,27 @@ class SQLCommands:
                 {passos},
                 FOREIGN KEY (id_modopreparo) REFERENCES Receitas(id_receitas)
             )
+        """
+        conn.execute(statment)
+        return
+    
+    def create_table_calendario(self, conn):
+        statment = f"""
+            CREATE TABLE IF NOT EXISTS Calendario(
+                dia CHAR(10),
+                Almoco CHAR(100),
+                Lanche CHAR(100),
+                Janta CHAR(100),
+                Sobremesa CHAR(100)
+            )
+        """
+        conn.execute(statment)
+        return
+        
+    def delete_row_calendar(self, conn, date):
+        statment = f"""
+            DELETE FROM Calendario
+            WHERE dia = {date};
         """
         conn.execute(statment)
         return
@@ -183,6 +205,17 @@ class SQLCommands:
         query = f"""
             SELECT * from ModoPreparo
             WHERE id_modopreparo = {id_receitas};
+        """
+        table = conn.execute(
+            query).fetchall()
+        return table
+        
+    def get_refeicao(self, conn, date):
+        """
+        """
+        query = f"""
+            SELECT * FROM Calendario
+            ;
         """
         table = conn.execute(
             query).fetchall()
