@@ -9,7 +9,6 @@ class CalendarioClass():
     
     def __base(self):
         with st.container():
-            print('aa')
             st.write("# Calendário")
             self.date = st.date_input("Dia", on_change=self.__changes)
             st.markdown('---')
@@ -17,7 +16,6 @@ class CalendarioClass():
     
     def __changes(self):
         date = self.date
-        print('aaa')
         with st.container():
             st.write("## Output")
             self.calendario_hoje = DB.get_calendario(str(date))
